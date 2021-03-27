@@ -407,6 +407,12 @@ tmux_conf_update_plugins_on_reload=true
 # "$@"
 # # /!\ do not remove the previous line
 #
+set -gu prefix2
+unbind C-a
+unbind C-b
+set -g prefix M-a  # alt-a
+bind M-a send-prefix
+
 bind -n C-l send-keys C-l # 在~/.tmux.conf 中对C-l定义的操作是：清屏和清屏幕历史，在local重新定义为 只清屏
 
 bind C-l clear-history #清空屏幕历史. 屏幕历史会越积越多，占用很多内存... 所以需要主动清理一下...
