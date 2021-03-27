@@ -404,3 +404,22 @@ tmux_conf_update_plugins_on_reload=true
 #
 # "$@"
 # # /!\ do not remove the previous line
+#
+bind -n C-l send-keys C-l # 在~/.tmux.conf 中对C-l定义的操作是：清屏和清屏幕历史，在local重新定义为 只清屏
+
+bind C-l clear-history #清空屏幕历史. 屏幕历史会越积越多，占用很多内存... 所以需要主动清理一下...
+
+set-option -g repeat-time 200   #控制台激活(操作按键前缀C-b)后的持续时间；设置合适的时间以避免每次操作都要先激活控制台，单位为毫秒
+
+#set -g synchronize-panes on
+
+#set -g status-justify centre #窗口列表居中展示
+set -g status-justify left #窗口列表居中展示
+
+# # Shift arrow to switch windows
+bind -n S-Left previous-window
+bind -n S-Right next-window
+
+# # Use Alt-vim keys without prefix key to switch panes
+bind -n M-h select-pane -L
+bind -n M-j select-pane -D 
