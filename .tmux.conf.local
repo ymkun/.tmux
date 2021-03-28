@@ -226,10 +226,9 @@ tmux_conf_theme_right_separator_sub="|"
 #     - #{uptime_s}
 #     - #{username}
 #     - #{username_ssh}
-tmux_conf_theme_status_left=" ❐ #S | ↑#{?uptime_y, #{uptime_y}y,}#{?uptime_d, #{uptime_d}d,}#{?uptime_h, #{uptime_h}h,}#{?uptime_m, #{uptime_m}m,} "
-#tmux_conf_theme_status_left='🚀 #S '
+tmux_conf_theme_status_left=' #S '
 #tmux_conf_theme_status_right=" #{prefix}#{mouse}#{pairing}#{synchronized}#{?battery_status,#{battery_status},}#{?battery_bar, #{battery_bar},}#{?battery_percentage, #{battery_percentage},} , %R , %d %b | #{username}#{root} | #{hostname} "
-tmux_conf_theme_status_right=" #{prefix}#{mouse}#{pairing}, %R , %m-%d | #{username}#{root} | #{hostname} "
+tmux_conf_theme_status_right='#{prefix}#{synchronized} %R , %m-%d | #{username} '
 
 # status left style
 tmux_conf_theme_status_left_fg="$tmux_conf_theme_colour_6,$tmux_conf_theme_colour_7,$tmux_conf_theme_colour_8"
@@ -428,6 +427,14 @@ set -g status-justify left #窗口列表居中展示
 bind -n S-Left previous-window
 bind -n S-Right next-window
 
+# # Use Alt- arrow keys without prefix key to switch panes
+bind -n M-Left select-pane -L
+bind -n M-Right select-pane -R
+bind -n M-Up select-pane -U
+bind -n M-Down select-pane -D 
+
 # # Use Alt-vim keys without prefix key to switch panes
 bind -n M-h select-pane -L
 bind -n M-j select-pane -D 
+bind -n M-k select-pane -U
+bind -n M-l select-pane -R 
